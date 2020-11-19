@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 export default class Toolbar extends Component {
     constructor(props) {
         super(props);
-        this.filters = props.filters;
         this.selected = props.selected;
     }
 
@@ -16,7 +15,7 @@ export default class Toolbar extends Component {
     render() {
         return (
             <div className="filters">
-              {this.filters.map(filter => <button onClick={this.handleClick}>{filter}</button>)}
+              {this.props.filters.map(filter => <button className={this.props.selected === filter ? 'active' : 'notActive'} key={filter} onClick={this.handleClick}>{filter}</button>)}
             </div>
         );
     }
