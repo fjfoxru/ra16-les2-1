@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 
 
 export default class Toolbar extends Component {
-    constructor(props) {
-        super(props);
-        this.selected = props.selected;
-    }
 
     handleClick = (e) => {
-        e.preventDefault();
-        this.props.onSelectFilter(e.target.textContent);
+        return () => {
+            this.props.onSelectFilter(e);
+        }
+    
     }
 
     render() {
         return (
             <div className="filters">
-              {this.props.filters.map(filter => <button className={this.props.selected === filter ? 'active' : 'notActive'} key={filter} onClick={this.handleClick}>{filter}</button>)}
+              {this.props.filters.map(filter => <button className={this.props.selected === filter ? 'active' : 'notActive'} key={filter} onClick={this.handleClick(filter)}>{filter}</button>)}
             </div>
         );
     }

@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import Portfolio from './components/Portfolio';
+import shortid from 'shortid';
 import './App.css';
 
 function App() {
 
-  const items = [{
+  let items = [{
     img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
     category: "Business Cards"
   }, {
@@ -56,6 +57,8 @@ function App() {
     img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_3.png",
     category: "Flayers"
   }];
+
+  items = items.map(product => Object.assign(product, {'id' : shortid.generate()}));
 
   return (
     <div className="App">
